@@ -1,44 +1,59 @@
- {
-         "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>renovatebot/.github", ":semanticCommitsDisabled"
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'github>renovatebot/.github',
+    ':semanticCommitsDisabled',
   ],
-        peerDependencies: {
-          versionStrategy: 'widen',
-        },
-        dependencies: {
-          versionStrategy: 'widen',
-        },
-        engines: {
-          rangeStrategy: 'auto',
-        },
-        optionalDependencies: {
-          versionStrategy: 'widen',
-        },
-        devDependencies: {
-          versionStrategy: 'widen',
-        },
-        depTypes: [
-          'dependencies',
-          {
-            depType: 'optionalDependencies',
-            respectLatest: false,
-          },
-        ],
-        packageRules: [
-          {
-            packagePatterns: '^(@angular|typescript)',
-            groupName: ['angular packages'],
-            excludedPackageNames: 'foo',
-          },
-          {
-            packageNames: ['foo'],
-            packageRules: [
-              {
-                depTypeList: ['bar'],
-                automerge: true,
-              },
-            ],
-          },
-        ],
-      }
+  packageRules: [
+    {
+      matchPackagePatterns: '^(@angular|typescript)',
+      groupName: 'angular packages',
+      excludePackageNames: 'foo',
+    },
+    {
+      matchPackageNames: [
+        'foo',
+      ],
+      matchDepTypes: [
+        'bar',
+      ],
+      automerge: true,
+    },
+    {
+      matchDepTypes: [
+        'peerDependencies',
+      ],
+      rangeStrategy: 'widen',
+    },
+    {
+      matchDepTypes: [
+        'dependencies',
+      ],
+      rangeStrategy: 'widen',
+    },
+    {
+      matchDepTypes: [
+        'engines',
+      ],
+      rangeStrategy: 'auto',
+    },
+    {
+      matchDepTypes: [
+        'optionalDependencies',
+      ],
+      rangeStrategy: 'widen',
+    },
+    {
+      matchDepTypes: [
+        'devDependencies',
+      ],
+      rangeStrategy: 'widen',
+    },
+    {
+      respectLatest: false,
+      matchDepTypes: [
+        'optionalDependencies',
+      ],
+    },
+  ],
+}
