@@ -1,0 +1,44 @@
+ {
+         "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>renovatebot/.github", ":semanticCommitsDisabled"
+  ],
+        peerDependencies: {
+          versionStrategy: 'widen',
+        },
+        dependencies: {
+          versionStrategy: 'widen',
+        },
+        engines: {
+          rangeStrategy: 'auto',
+        },
+        optionalDependencies: {
+          versionStrategy: 'widen',
+        },
+        devDependencies: {
+          versionStrategy: 'widen',
+        },
+        depTypes: [
+          'dependencies',
+          {
+            depType: 'optionalDependencies',
+            respectLatest: false,
+          },
+        ],
+        packageRules: [
+          {
+            packagePatterns: '^(@angular|typescript)' as never,
+            groupName: ['angular packages'] as never,
+            excludedPackageNames: 'foo',
+          },
+          {
+            packageNames: ['foo'],
+            packageRules: [
+              {
+                depTypeList: ['bar'],
+                automerge: true,
+              },
+            ],
+          },
+        ],
+      }
