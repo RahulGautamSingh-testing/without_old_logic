@@ -27,8 +27,8 @@
         ],
         packageRules: [
           {
-            packagePatterns: '^(@angular|typescript)' as never,
-            groupName: ['angular packages'] as never,
+            packagePatterns: '^(@angular|typescript)',
+            groupName: ['angular packages'],
             excludedPackageNames: 'foo',
           },
           {
